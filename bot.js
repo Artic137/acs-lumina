@@ -3,8 +3,10 @@ const client = new Discord.Client();
 
 var personaje = new Array(74)
 var tabla_artic = new Array(74)
-var tabla_solarblair = new Array(74)
+var tabla_a = new Array(74)
 var tabla_blitzex = new Array(74)
+var tabla_keyxion = new Array(74)
+var limite = 5
 var texto = ''
 
 // Personajes
@@ -117,8 +119,9 @@ client.on('message', msg => {
 function funcion_inicializar(msg) {
   for (var i = 0; i < personaje.length; i++) {
 	tabla_artic[i] = 0;
-	tabla_solarblair[i] = 0;
+	tabla_a[i] = 0;
 	tabla_blitzex[i] = 0;
+	tabla_keyxion[i] = 0;
   }
   msg.reply('has inicializado los usos de personajes de todos los jugadores.');
 };
@@ -132,8 +135,9 @@ function funcion_consultar(msg) {
   var contador = 0
   msg.delete();
   if (msg.author.username === 'Artic') tabla_aux = tabla_artic;
-  if (msg.author.username === 'Solarblair') tabla_aux = tabla_solarblair;
+  if (msg.author.username === '_A_') tabla_aux = tabla_a;
   if (msg.author.username === 'Blitzex') tabla_aux = tabla_blitzex;
+  if (msg.author.username === 'Keyxion') tabla_aux = tabla_keyxion;
 
   for (var i = 0; i < personaje.length; i++) {
 	if (tabla_aux[i] != 0) contador++;
@@ -141,9 +145,9 @@ function funcion_consultar(msg) {
   
   if (contador != 0) {
   for (var i = 0; i < personaje.length; i++) {
-	if (tabla_aux[i] != 0 && tabla_aux[i] != 5)
+	if (tabla_aux[i] != 0 && tabla_aux[i] != limite)
 	  texto = texto + personaje[i] + ': ' + tabla_aux[i] + '\n';
-        if (tabla_aux[i] === 5)
+        if (tabla_aux[i] === limite)
 	  texto = texto + personaje[i] + ': ' + tabla_aux[i] + '. \u00A1No puedes utilizar a ' + personaje[i] + ' m\u00E1s veces! \n';
   }
   msg.reply('este es el n\u00FAmero de veces que has utilizado cada personaje: \n' + texto);
@@ -171,24 +175,31 @@ function funcion_uso(msg) {
   }
 
   if (indice != null) {
-	if (msg.author.username === 'Artic' && tabla_artic[indice] <= 5) tabla_artic[indice]++;
-	if (msg.author.username === 'Artic' && tabla_artic[indice] === 6) {
+	if (msg.author.username === 'Artic' && tabla_artic[indice] <= limite) tabla_artic[indice]++;
+	if (msg.author.username === 'Artic' && tabla_artic[indice] === limite + 1) {
 		msg.reply('No puedes a\u00F1adir m\u00E1s usos de ' + personaje[indice]);
 		tabla_artic[indice]--;
 		aux = false;
 	 }
 
-	if (msg.author.username === 'Solarblair' && tabla_solarblair[indice] <= 5) tabla_solarblair[indice]++;
-	if (msg.author.username === 'Solarblair' && tabla_solarblair[indice] === 6) {
+	if (msg.author.username === '_A_' && tabla_a[indice] <= limite) tabla_a[indice]++;
+	if (msg.author.username === '_A_' && tabla_a[indice] === limite + 1) {
+		msg.reply('No puedes a\u00F1adir m\u00E1s usos de ' + personaje[indice]);
+		tabla_a[indice]--;
+		aux = false;
+	 }
+
+	if (msg.author.username === 'Blitzex' && tabla_blitzex[indice] <= limite) tabla_blitzex[indice]++;
+	if (msg.author.username === 'Blitzex' && tabla_blitzex[indice] === limite + 1) {
 		msg.reply('No puedes a\u00F1adir m\u00E1s usos de ' + personaje[indice]);
 		tabla_solarblair[indice]--;
 		aux = false;
 	 }
 
-	if (msg.author.username === 'Blitzex' && tabla_blitzex[indice] <= 5) tabla_blitzex[indice]++;
-	if (msg.author.username === 'Blitzex' && tabla_blitzex[indice] === 6) {
+	if (msg.author.username === 'Keyxion' && tabla_keyxion[indice] <= limite) tabla_keyxion[indice]++;
+	if (msg.author.username === 'Keyxion' && tabla_keyxion[indice] === limite + 1) {
 		msg.reply('No puedes a\u00F1adir m\u00E1s usos de ' + personaje[indice]);
-		tabla_solarblair[indice]--;
+		tabla_keyxion[indice]--;
 		aux = false;
 	 }
 
