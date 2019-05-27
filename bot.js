@@ -27,7 +27,7 @@ personaje[15] = 'Bowser';
 personaje[16] = 'Ice Climbers';
 personaje[17] = 'Sheik';
 personaje[18] = 'Zelda';
-personaje[19] = 'Dr. Mario: ';
+personaje[19] = 'Dr. Mario';
 personaje[20] = 'Pichu';
 personaje[21] = 'Falco';
 personaje[22] = 'Marth';
@@ -205,5 +205,6 @@ function funcion_uso(msg) {
   
 };
 
-// Token para método por Github
+
+// Token 
 client.login(process.env.BOT_TOKEN);
