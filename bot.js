@@ -6,7 +6,7 @@ var tabla_artic = new Array(74)
 var tabla_a = new Array(74)
 var tabla_blitzex = new Array(74)
 var tabla_keyxion = new Array(74)
-var limite = 5
+var limite = 3
 var texto = ''
 
 // Personajes
