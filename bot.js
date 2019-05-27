@@ -19,7 +19,7 @@ function funcion_consultar(msg) {
   );
 };
 
-client.login(process.env.TOKEN_BOT);
+client.login(process.env.BOT_TOKEN);
 
 
 
