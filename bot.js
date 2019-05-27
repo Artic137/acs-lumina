@@ -19,7 +19,7 @@ function funcion_consultar(msg) {
   );
 };
 
-client.login(process.env.NTgyMjM1NjQxNDU1MTgxODUw.XOvTfA.in0Q4gFfackJXRwsFc8oftLQ_a8);
+client.login(process.env.TOKEN_BOT);
 
 
 
