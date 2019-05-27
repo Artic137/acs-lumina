@@ -205,8 +205,5 @@ function funcion_uso(msg) {
   
 };
 
-
-// Token para método por cmd
-// client.login('NTgyMjM1NjQxNDU1MTgxODUw.XOvTfA.in0Q4gFfackJXRwsFc8oftLQ_a8');
 // Token para método por Github
 client.login(process.env.BOT_TOKEN);
