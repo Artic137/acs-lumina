@@ -149,7 +149,7 @@ function funcion_consultar(msg) {
   msg.reply('este es el n\u00FAmero de veces que has utilizado cada personaje: \n' + texto);
   }
 
-  else {msg.reply('no has a\u00F1adido ning\u00FAn personaje. Utiliza el comando \\' + 'uso de la siguiente manera: \n' + '\\' + 'uso Personaje \n' + 'Deja un espacio entre el comando y el personaje. Escribe el nombre del personaje con la primera letra en may\u00FAscula.');}
+  else {msg.reply('no has a\u00F1adido ning\u00FAn personaje. Utiliza el comando /' + 'uso de la siguiente manera: \n' + '/' + 'uso Personaje \n' + 'Deja un espacio entre el comando y el personaje. Escribe el nombre del personaje con la primera letra en may\u00FAscula.');}
   texto = '';
 };
 
