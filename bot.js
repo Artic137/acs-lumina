@@ -2,12 +2,19 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 
 var personaje = new Array(74)
+var participante = new Array(4)
 var tabla_artic = new Array(74)
 var tabla_a = new Array(74)
 var tabla_blitzex = new Array(74)
 var tabla_keyxion = new Array(74)
 var limite = 3
 var texto = ''
+
+// Participantes
+participante[0] = 'Artic';
+participante[1] = '_A_';
+participante[2] = 'Blitzex';
+participante[3] = 'Keyxion';
 
 // Personajes
 personaje[0] = 'Mario';
@@ -92,7 +99,13 @@ client.on('ready', () => {
 });
 
 client.on('message', msg => {	
-// Inicializar
+ var participa = false;
+ for (var i = 0; i < participante.length; i++) {
+  if(participante[i] === msg.author.username) participa = true;
+ }
+
+ if (participa) {
+ // Inicializar por parte de la prasidanta
   if(msg.content.startsWith("/inicializar")) {
 	msg.delete();
 	if (msg.author.username === 'Artic') {
@@ -100,15 +113,31 @@ client.on('message', msg => {
 	}
   }
 
-// Consultar usos de personajes
+ // Consultar usos de personajes
   if (msg.content.startsWith("/consulta")) {
 	funcion_consultar(msg)
   }
 
-// Añadir personaje
+ // Añadir personaje
   if (msg.content.startsWith("/uso")) {
 	funcion_uso(msg)
   }
+
+ // Sumar personaje por parte de la prasidanta
+  if(msg.content.startsWith("/sumar")) {
+	msg.delete();
+	if (msg.author.username === 'Artic') {
+	  funcion_sumar(msg)
+	}
+  }
+ }
+
+ else {
+  if(msg.content.startWith("/inicializar") || msg.content.startsWith("/consulta") || msg.content.startsWith("/uso")) {
+	msg.delete();
+	msg.reply('No puedes utilizar ese comando porque no participas en el torneo actual de Smash o ya has sido eliminado');
+  }
+ }
 
 });
 
@@ -163,9 +192,9 @@ function funcion_consultar(msg) {
 ///////////////////////
 function funcion_uso(msg) {
   var pjn = ''
-  var indice = null;
-  var texto = '"';
-  var aux = true;
+  var indice = null
+  var texto = '"'
+  var aux = true
 
   msg.delete();
 
@@ -212,6 +241,37 @@ function funcion_uso(msg) {
 	  else {texto = texto + personaje[i] + '", "';}
 	}
 	msg.reply('has escrito mal el nombre del personaje. Los nombres exactos que debes utilizar se indican a continuaci\u00F3n. Debes escribir los espacios y tildes que correspondan sin las comillas: \n' + texto);
+  }
+  
+};
+
+///////////////////////
+/////// Sumar /////////
+///////////////////////
+function funcion_sumar(msg) {
+  var pjn
+  var jugador
+  var indice = null
+  var aux = true
+
+  jugador = msg.content.substr(7, 8);
+
+  pjn = msg.content.substr(10);
+  for (var i = 0; i < personaje.length; i++) {
+	if (pjn === personaje[i]) indice = i;
+  }
+
+  if (indice != null) {
+	if (jugador === 0) tabla_artic[indice]++;
+	if (jugador === 1) tabla_a[indice]++;
+	if (jugador === 2) tabla_blitzex[indice]++;
+	if (jugador === 3) tabla_keyxion[indice]++;
+
+	if(aux) msg.reply('has a\u00F1adido un uso de ' + pjn + ' a ' + participante[jugador] + '.');
+	
+  }
+  else {
+	msg.reply('has escrito mal el nombre del personaje.);
   }
   
 };
