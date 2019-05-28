@@ -12,7 +12,7 @@ var texto = ''
 
 // Participantes
 participante[0] = 'Artic';
-participante[1] = '_A_';
+participante[1] = 'A';
 participante[2] = 'Blitzex';
 participante[3] = 'Keyxion';
 
@@ -172,7 +172,7 @@ function funcion_consultar(msg) {
   var contador = 0
   msg.delete();
   if (msg.author.username === 'Artic') tabla_aux = tabla_artic;
-  if (msg.author.username === '_A_') tabla_aux = tabla_a;
+  if (msg.author.username === 'A') tabla_aux = tabla_a;
   if (msg.author.username === 'Blitzex') tabla_aux = tabla_blitzex;
   if (msg.author.username === 'Keyxion') tabla_aux = tabla_keyxion;
 
@@ -219,8 +219,8 @@ function funcion_uso(msg) {
 		aux = false;
 	 }
 
-	if (msg.author.username === '_A_' && tabla_a[indice] <= limite) tabla_a[indice]++;
-	if (msg.author.username === '_A_' && tabla_a[indice] === limite + 1) {
+	if (msg.author.username === 'A' && tabla_a[indice] <= limite) tabla_a[indice]++;
+	if (msg.author.username === 'A' && tabla_a[indice] === limite + 1) {
 		msg.reply('No puedes a\u00F1adir m\u00E1s usos de ' + personaje[indice]);
 		tabla_a[indice]--;
 		aux = false;
