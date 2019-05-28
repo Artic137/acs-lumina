@@ -4,7 +4,7 @@ const client = new Discord.Client();
 var personaje = new Array(74)
 var participante = new Array(4)
 var tabla_artic = new Array(74)
-var tabla_a = new Array(74)
+var tabla_joseba = new Array(74)
 var tabla_blitzex = new Array(74)
 var tabla_keyxion = new Array(74)
 var limite = 3
@@ -12,7 +12,7 @@ var texto = ''
 
 // Participantes
 participante[0] = 'Artic';
-participante[1] = 'A';
+participante[1] = 'Joseba De Carglass';
 participante[2] = 'Blitzex';
 participante[3] = 'Keyxion';
 
@@ -156,7 +156,7 @@ client.on('message', msg => {
 function funcion_inicializar(msg) {
   for (var i = 0; i < personaje.length; i++) {
 	tabla_artic[i] = 0;
-	tabla_a[i] = 0;
+	tabla_joseba[i] = 0;
 	tabla_blitzex[i] = 0;
 	tabla_keyxion[i] = 0;
   }
@@ -172,7 +172,7 @@ function funcion_consultar(msg) {
   var contador = 0
   msg.delete();
   if (msg.author.username === 'Artic') tabla_aux = tabla_artic;
-  if (msg.author.username === 'A') tabla_aux = tabla_a;
+  if (msg.author.username === 'Joseba De Carglass') tabla_aux = tabla_joseba;
   if (msg.author.username === 'Blitzex') tabla_aux = tabla_blitzex;
   if (msg.author.username === 'Keyxion') tabla_aux = tabla_keyxion;
 
@@ -219,10 +219,10 @@ function funcion_uso(msg) {
 		aux = false;
 	 }
 
-	if (msg.author.username === 'A' && tabla_a[indice] <= limite) tabla_a[indice]++;
-	if (msg.author.username === 'A' && tabla_a[indice] === limite + 1) {
+	if (msg.author.username === 'Joseba De Carglass' && tabla_joseba[indice] <= limite) tabla_joseba[indice]++;
+	if (msg.author.username === 'Joseba De Carglass' && tabla_joseba[indice] === limite + 1) {
 		msg.reply('No puedes a\u00F1adir m\u00E1s usos de ' + personaje[indice]);
-		tabla_a[indice]--;
+		tabla_joseba[indice]--;
 		aux = false;
 	 }
 
@@ -275,7 +275,7 @@ function funcion_sumar(msg) {
 		jugador = 0;
 	}
 	if (jugador === '01') {
-		tabla_a[indice]++;
+		tabla_joseba[indice]++;
 		jugador = 1;
 	}	
 	if (jugador === '02') {
@@ -319,7 +319,7 @@ function funcion_restar(msg) {
 		jugador = 0;
 	}
 	if (jugador === '01') {
-		tabla_a[indice]--;
+		tabla_joseba[indice]--;
 		jugador = 1;
 	}	
 	if (jugador === '02') {
