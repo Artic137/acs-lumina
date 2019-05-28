@@ -130,10 +130,18 @@ client.on('message', msg => {
 	  funcion_sumar(msg)
 	}
   }
+
+ // Restar personaje por parte de la prasidanta
+  if(msg.content.startsWith("/restar")) {
+	msg.delete();
+	if (msg.author.username === 'Artic') {
+	  funcion_restar(msg)
+	}
+  }
  }
 
  else {
-  if(msg.content.startWith("/inicializar") || msg.content.startsWith("/consulta") || msg.content.startsWith("/uso")) {
+  if(msg.content.startsWith("/inicializar") || msg.content.startsWith("/consulta") || msg.content.startsWith("/uso") || msg.content.startsWith("/sumar") || msg.content.startsWith("/restar")) {
 	msg.delete();
 	msg.reply('No puedes utilizar ese comando porque no participas en el torneo actual de Smash o ya has sido eliminado');
   }
@@ -254,7 +262,7 @@ function funcion_sumar(msg) {
   var indice = null
   var aux = true
 
-  jugador = msg.content.substr(7, 8);
+  jugador = msg.content.substr(7, 2);
 
   pjn = msg.content.substr(10);
   for (var i = 0; i < personaje.length; i++) {
@@ -262,18 +270,73 @@ function funcion_sumar(msg) {
   }
 
   if (indice != null) {
-	if (jugador === 0) tabla_artic[indice]++;
-	if (jugador === 1) tabla_a[indice]++;
-	if (jugador === 2) tabla_blitzex[indice]++;
-	if (jugador === 3) tabla_keyxion[indice]++;
+	if (jugador === '00') {
+		tabla_artic[indice]++;
+		jugador = 0;
+	}
+	if (jugador === '01') {
+		tabla_a[indice]++;
+		jugador = 1;
+	}	
+	if (jugador === '02') {
+		tabla_blitzex[indice]++;
+		jugador = 2;
+	}	
+	if (jugador === '03') {
+		tabla_keyxion[indice]++;
+		jugador = 3;
+	}
 
 	if(aux) msg.reply('has a\u00F1adido un uso de ' + pjn + ' a ' + participante[jugador] + '.');
 	
   }
   else {
-	msg.reply('has escrito mal el nombre del personaje.);
+	msg.reply('has escrito mal el nombre del personaje.');
   }
   
+};
+
+
+///////////////////////
+/////// Restar ////////
+///////////////////////
+function funcion_restar(msg) {
+  var pjn
+  var jugador
+  var indice = null
+  var aux = true
+
+  jugador = msg.content.substr(7, 2);
+
+  pjn = msg.content.substr(10);
+  for (var i = 0; i < personaje.length; i++) {
+	if (pjn === personaje[i]) indice = i;
+  }
+
+  if (indice != null) {
+	if (jugador === '00') {
+		tabla_artic[indice]--;
+		jugador = 0;
+	}
+	if (jugador === '01') {
+		tabla_a[indice]--;
+		jugador = 1;
+	}	
+	if (jugador === '02') {
+		tabla_blitzex[indice]--;
+		jugador = 2;
+	}	
+	if (jugador === '03') {
+		tabla_keyxion[indice]--;
+		jugador = 3;
+	}
+
+	if(aux) msg.reply('has restado un uso de ' + pjn + ' a ' + participante[jugador] + '.');
+	
+  }
+  else {
+	msg.reply('has escrito mal el nombre del personaje.');
+  }
 };
 
 
