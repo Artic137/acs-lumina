@@ -306,9 +306,9 @@ function funcion_restar(msg) {
   var indice = null
   var aux = true
 
-  jugador = msg.content.substr(7, 2);
+  jugador = msg.content.substr(8, 2);
 
-  pjn = msg.content.substr(10);
+  pjn = msg.content.substr(11);
   for (var i = 0; i < personaje.length; i++) {
 	if (pjn === personaje[i]) indice = i;
   }
