@@ -448,4 +448,4 @@ function funcion_leer() {
 
 
 // Token 
-// client.login(process.env.BOT_TOKEN);
+client.login(process.env.BOT_TOKEN);
