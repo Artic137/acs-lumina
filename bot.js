@@ -148,10 +148,16 @@ client.on('message', msg => {
 	}
 	funcion_escribir()
   }
+
+  // Restaurar
+   if(msg.content.startsWith("/restaurar")) {
+	funcion_restaurar()
+	msg.delete();
+   }
  }
 
  else {
-  if(msg.content.startsWith("/inicializar") || msg.content.startsWith("/consulta") || msg.content.startsWith("/uso") || msg.content.startsWith("/sumar") || msg.content.startsWith("/restar")) {
+  if(msg.content.startsWith("/inicializar") || msg.content.startsWith("/consulta") || msg.content.startsWith("/uso") || msg.content.startsWith("/sumar") || msg.content.startsWith("/restar") || msg.content.startsWith("/restaurar")) {
 	funcion_leer()
 	msg.delete();
 	msg.reply('No puedes utilizar ese comando porque no participas en el torneo actual de Smash o ya has sido eliminado');
@@ -445,6 +451,20 @@ function funcion_leer() {
 
 };
 
+
+///////////////////////
+///// Restaurar ///////
+///////////////////////
+function funcion_restaurar() {
+  for (var i = 0; i < personaje.length; i++) {
+	tabla_artic[i] = 0;
+	tabla_joseba[i] = 0;
+	tabla_blitzex[i] = 0;
+	tabla_keyxion[i] = 0;
+  }
+  funcion_leer()
+  msg.reply('has restaurado los usos de los personajes.');
+};
 
 
 // Token 
