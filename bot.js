@@ -153,6 +153,8 @@ client.on('message', msg => {
    if(msg.content.startsWith("/restaurar")) {
 	funcion_restaurar()
 	msg.delete();
+  	funcion_leer()
+  	msg.reply('has restaurado los usos de los personajes.');
    }
  }
 
@@ -462,8 +464,6 @@ function funcion_restaurar() {
 	tabla_blitzex[i] = 0;
 	tabla_keyxion[i] = 0;
   }
-  funcion_leer()
-  msg.reply('has restaurado los usos de los personajes.');
 };
 
 
